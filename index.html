@@ -4,18 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PineGate Storage — Coming Soon</title>
-
-  <!-- Favicon / tab icon (uses your logo.png) -->
   <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="apple-touch-icon" href="logo.png" />
-  <meta name="theme-color" content="#2F5E3D" />
-
   <style>
     :root{
       --text: #ffffff;
       --accent: #CFE9C9;
-      --bg1: url('forest.jpg');      /* put your forest image here */
-      --kenburns-scale: 1.08;        /* slight zoom so parallax doesn't show edges */
+      --bg1: url('forest.jpg'); /* <- put your forest image here */
+      --kenburns-scale: 1.1;
     }
     *, *::before, *::after{ box-sizing: border-box; }
     html, body{ height:100%; margin:0; }
@@ -24,54 +19,47 @@
       color:var(--text);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       min-height:100vh;
-      overflow:hidden; /* keeps edges clean when panning */
-      background:#102417; /* fallback color while image loads */
+      overflow:hidden;
     }
 
-    /* Background layer */
+    /* === Background layer === */
     .bg{
       position:fixed; inset:0;
       background-image: var(--bg1);
       background-position:center;
       background-size:cover;
-      transform-origin:center;
       will-change: transform;
-      transform: translate3d(0,0,0) scale(var(--kenburns-scale));
       filter: saturate(1.05) contrast(1.02);
+      transition: transform 0.15s ease-out;
+      transform: scale(var(--kenburns-scale));
     }
 
-    /* Soft blend + vignette for readability */
+    /* Soft light color wash + vignette */
     .blend{ position:fixed; inset:0; pointer-events:none; mix-blend-mode: soft-light;
-      background:
-        radial-gradient(1200px 800px at 80% 10%, rgba(143,199,122,0.35), transparent 60%),
-        radial-gradient(800px 600px at 10% 90%, rgba(20,60,35,0.35), transparent 60%);
+      background: radial-gradient(1200px 800px at 80% 10%, rgba(143,199,122,0.35), transparent 60%),
+                  radial-gradient(800px 600px at 10% 90%, rgba(20,60,35,0.35), transparent 60%);
     }
     .vignette{ position:fixed; inset:0; box-shadow: inset 0 0 160px rgba(0,0,0,.45); pointer-events:none; }
+
+    /* Floating specks */
+    .speck{ position:fixed; width:2px; height:2px; background: rgba(255,255,255,.35); border-radius:50%; filter: blur(.3px); pointer-events:none; animation: drift 18s linear infinite; }
+    @keyframes drift{ from{ transform: translateY(100vh); opacity:0 } 10%{ opacity:.7 } 90%{ opacity:.7 } to{ transform: translateY(-10vh); opacity:0 } }
+
     .scrim{ position:fixed; inset:0; background: rgba(0,0,0,.45); }
 
-    /* Subtle floating specks for atmosphere */
-    .speck{ position:fixed; width:2px; height:2px; background: rgba(255,255,255,.35); border-radius:50%;
-      filter: blur(.3px); pointer-events:none; animation: drift 18s linear infinite; }
-    @keyframes drift{
-      from{ transform: translateY(100vh); opacity:0 }
-      10%{ opacity:.7 }
-      90%{ opacity:.7 }
-      to{ transform: translateY(-10vh); opacity:0 }
-    }
-
-    /* Content */
+    /* === Content card === */
     .wrap{ position:relative; z-index:5; display:grid; place-items:center; min-height:100vh; text-align:center; padding: clamp(1rem, 3vw, 2rem); }
-    .card{ position:relative; padding: clamp(1.2rem, 4vw, 2.6rem); width:min(92vw, 760px);
-      border-radius: 18px; backdrop-filter: blur(4px); background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.15); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .card{ position:relative; padding: clamp(1.2rem, 4vw, 2.6rem); width:min(92vw, 760px); border-radius: 18px; backdrop-filter: blur(4px); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
     .logo{ max-width:190px; margin-bottom:1rem; filter: drop-shadow(0 6px 20px rgba(0,0,0,.35)); }
     h1{ font-size: clamp(2.2rem, 7vw, 4.2rem); margin:0 0 .25rem; font-weight:800; letter-spacing:.3px; }
     p{ font-size: clamp(1.05rem, 2.8vw, 1.5rem); margin:.25rem 0 0; opacity:.92 }
-    .tag{ display:inline-block; margin-top:.75rem; padding:.25rem .6rem; border-radius:999px;
-      background:rgba(255,255,255,.14); color:var(--accent); font-weight:700; letter-spacing:.08em;
-      text-transform:uppercase; font-size:.85rem; }
+    .tag{ display:inline-block; margin-top:.75rem; padding:.25rem .6rem; border-radius:999px; background:rgba(255,255,255,.14); color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.85rem; }
 
     footer{ position:fixed; bottom:14px; left:0; right:0; text-align:center; font-size:.85rem; opacity:.85; z-index:5 }
+    /* --- subtle load + tagline fades --- */
+    .card{ opacity: 0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
+    .card.show{ opacity: 1; transform: translateY(0); }
+    #tagline{ opacity: 1; transition: opacity .4s ease; }
   </style>
 </head>
 <body>
@@ -80,7 +68,7 @@
   <div class="vignette" aria-hidden="true"></div>
   <div class="scrim" aria-hidden="true"></div>
 
-  <!-- a few animated specks -->
+  <!-- a few animated specks for life -->
   <span class="speck" style="left:10%; animation-delay:-2s"></span>
   <span class="speck" style="left:45%; animation-delay:-9s"></span>
   <span class="speck" style="left:72%; animation-delay:-5s"></span>
@@ -90,7 +78,7 @@
     <main class="card" role="main">
       <img src="logo.png" alt="PineGate Storage Logo" class="logo" />
       <h1>PineGate Storage</h1>
-      <p>Adventure Awaits</p>
+      <p id="tagline" class="fade">Adventure Awaits</p>
       <span class="tag">Coming Soon</span>
     </main>
   </div>
@@ -101,22 +89,22 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Mouse parallax with smooth inertia
+    // Mouse parallax with easing + rotating taglines
     const bg = document.querySelector('.bg');
-    const scale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--kenburns-scale')) || 1.08;
+    const scale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--kenburns-scale')) || 1.1;
 
-    let targetX = 0, targetY = 0;   // where we want to go
-    let currentX = 0, currentY = 0; // where we are
-    const strength = 5;             // higher = more movement (in % of viewport)
+    let targetX = 0, targetY = 0;   // desired position in px
+    let currentX = 0, currentY = 0; // current animated position
+    const strength = 30;            // max shift in px
+    const ease = 0.08;              // 0..1 (lower = smoother)
 
-    function raf(){
-      // ease toward target
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-      bg.style.transform = `translate3d(${currentX}%, ${currentY}%, 0) scale(${scale})`;
-      requestAnimationFrame(raf);
+    function tick(){
+      currentX += (targetX - currentX) * ease;
+      currentY += (targetY - currentY) * ease;
+      bg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+      requestAnimationFrame(tick);
     }
-    requestAnimationFrame(raf);
+    requestAnimationFrame(tick);
 
     window.addEventListener('pointermove', (e)=>{
       const nx = (e.clientX / innerWidth  - 0.5) * 2;  // -1..1
@@ -124,16 +112,31 @@
       targetX = nx * strength;
       targetY = ny * strength;
     });
+    window.addEventListener('pointerleave', ()=>{ targetX = 0; targetY = 0; });
 
-    window.addEventListener('pointerleave', ()=>{
-      targetX = 0; targetY = 0; // recenter when cursor leaves window
+    // Fade-in on load
+    window.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelector('.card')?.classList.add('show');
     });
 
-    // Tiny auto drift so there's always a hint of motion (esp. on touch)
-    let t = 0;
-    setInterval(()=>{ t += 0.02; if (!window.matchMedia('(pointer: fine)').matches) {
-      targetX = Math.sin(t) * 1.2; targetY = Math.cos(t*0.8) * 1.2;
-    }}, 100);
+    // Rotating taglines
+    const lines = [
+      'Adventure Awaits',
+      'Store. Explore. Repeat.',
+      'Space for Every Journey',
+      'Secure Storage for What Moves You'
+    ];
+    const tag = document.getElementById('tagline');
+    let i = 0;
+    setInterval(()=>{
+      if(!tag) return;
+      tag.style.opacity = 0;
+      setTimeout(()=>{
+        i = (i + 1) % lines.length;
+        tag.textContent = lines[i];
+        tag.style.opacity = 1;
+      }, 250);
+    }, 4000);
   </script>
 </body>
 </html>
