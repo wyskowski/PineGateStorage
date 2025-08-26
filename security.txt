@@ -1,0 +1,6 @@
+Contact: https://pinegatestorage.com/#contact
+Contact: mailto:info@pinegatestorage.com
+Policy: https://pinegatestorage.com/security.html
+Acknowledgments: https://pinegatestorage.com/security-acknowledgments.html
+Expires: 2026-08-26T23:59:59Z
+Preferred-Languages: en

@@ -1,0 +1,17 @@
+/* TEAM */
+Developer: Ryan Wyskowski
+Site: https://pinegatestorage.com/
+Twitter: https://twitter.com/
+From: Omaha, Nebraska, USA
+
+/* THANKS */
+Thanks to our early customers, local partners, and the Omaha RV community.
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript, Bootstrap
+Components: GitHub Pages
+Hosting: GitHub Pages
+Last update: 2025-08-26
+
+/* CONTACT */
+General: https://pinegatestorage.com/#contact
