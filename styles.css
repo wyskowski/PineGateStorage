@@ -1,0 +1,522 @@
+/* PineGate Storage – Pre‑launch styles */
+:root{
+  --green:#2e5536;
+  --green-2:#3b6b45;
+  --cream:#f7f3ea;
+  --dark:#0e1a13;
+}
+html,body{height:100%;scroll-behavior:smooth;}
+/* adjust to your navbar height */
+#partners { scroll-margin-top: 80px; }
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color:#233;
+}
+h1,h2,.brand-text,.section-title{
+  font-family: "DM Serif Display", Georgia, serif;
+}
+.section-title{font-size:2.1rem}
+.navbar .brand-text{font-weight:700;font-size:1.1rem}
+#topNav.scrolled{
+  background: rgba(14,26,19,.9) !important;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+#topNav{ z-index:1040; }
+
+/* Mobile: force dark background so links are readable over hero */
+@media (max-width: 991.98px){
+  #topNav {
+    background: rgba(8,8,8,.92) !important;
+    backdrop-filter: saturate(160%) blur(6px);
+    -webkit-backdrop-filter: saturate(160%) blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  #topNav .navbar-brand,
+  #topNav .nav-link {
+    color:#fff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    font-weight:600;
+  }
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  height: 92vh;
+  min-height: 560px;
+  color:#fff;
+  overflow: hidden;
+}
+.hero-bg{position:absolute; inset:0; overflow:hidden}
+.hero-bg img{
+  width:110%; height:110%;
+  object-fit: cover;
+  transform: translate3d(0,0,0) scale(1.05);
+  transition: transform .1s linear;
+  will-change: transform;
+  filter: saturate(1.05) contrast(1.05);
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.2) 40%, rgba(0,0,0,.65));
+}
+.logo-hero{width:90px; height:auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35));}
+.opacity-85{opacity:.85}
+.btn-primary{background:var(--green); border-color:var(--green)}
+.btn-primary:hover{background:var(--green-2); border-color:var(--green-2)}
+.btn-outline-light:hover{color:#111; background:#fff; border-color:#fff}
+
+/* Features */
+.feature-card{background:#fff}
+.icon-circle{
+  display:inline-grid; place-items:center;
+  width:44px; height:44px; border-radius:999px;
+  background: var(--cream);
+  color: var(--green);
+  font-size:1.25rem;
+}
+
+/* Customer Promise */
+.promise-card{background:#fff; border-radius:1.25rem; padding:18px; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.promise-icon{font-size:1.5rem; color:var(--green); margin-bottom:.25rem}
+.promise-text{font-weight:600}
+
+/* Early bird banner */
+.bg-early{ background: linear-gradient(90deg, #f6f1e4, #fff7e6); border-top:1px solid #efe3cc; border-bottom:1px solid #efe3cc;}
+
+/* Keep all slides the same height as the 16:9 frame */
+#carouselFrame .carousel-inner,
+#carouselFrame .carousel-item { height: 100%; }
+#carouselFrame img { width: 100%; height: 100%; object-fit: cover; }
+#carouselFrame { height: 420px; }
+
+
+
+/* Map sizing (keep or adjust) */
+.map { height: 420px; width: 100%; }
+
+/* Map overlay controls */
+.map { position: relative; }
+.map .map-overlay{
+  position: absolute;
+  left: 12px;
+  bottom: 12px;   /* move to bottom */
+  top: auto;      /* cancel the top value */
+  right: auto;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  z-index: 1000;
+}
+
+.status-pill{
+  padding:.35rem .6rem; border-radius:999px;
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  font-weight:600;
+}
+.status-pill.inside{ color:#1a7f37; }   /* green */
+.status-pill.outside{ color:#b23a2b; }  /* red */
+
+/* Legend */
+.map-legend .legend-dot{
+  display:inline-block; width:10px; height:10px; margin-right:6px; border-radius:50%;
+}
+.legend-100{ background:#2e5536; opacity:.6; }
+.legend-200{ background:#2e5536; opacity:.25; }
+
+/* optional: make zoom buttons larger for mobile-friendliness */
+.leaflet-control-zoom a { font-size: 1.1rem; line-height: 1.1; }
+
+/* legend dot for 150 mi */
+.legend-150{ background:#2e5536; opacity:.35; }
+
+/* slightly bigger zoom buttons for older users */
+.leaflet-control-zoom a, .maplibregl-ctrl button { font-size: 1.1rem; }
+
+
+
+/* Timeline */
+.timeline{position:relative; margin-left:12px}
+.timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:#e5e5e5}
+.tl-item{position:relative; padding-left:38px; margin-bottom:20px}
+.tl-dot{position:absolute; left:3px; top:4px; width:16px; height:16px; border-radius:50%; background:var(--green)}
+.tl-content h6{margin:0 0 4px 0}
+
+/* Flow */
+.flow-step{background:#fff; border-radius:1.25rem; padding:20px; height:100%; box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.flow-icon{font-size:1.8rem; color:var(--green); margin-bottom:.5rem}
+
+/* Badges */
+.badge-card{display:flex; align-items:center; gap:.5rem; background:#fff; border-radius:999px; padding:10px 14px; box-shadow:0 6px 20px rgba(0,0,0,.06); justify-content:center}
+.badge-card i{color:var(--green)}
+
+/* Interactive pine background (subtle on desktop, disabled on mobile) */
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image: radial-gradient(rgba(255,255,255,.035) 20%, transparent 21%);
+  background-size: 24px 24px; mix-blend-mode: overlay;
+}
+@media (max-width: 768px){
+  .hero::before{ display:none; }
+}
+
+/* Anchor offset for fixed nav */
+:target{ scroll-margin-top: 84px; }
+
+/* Accessible tap targets */
+.btn, .nav-link{ padding:.6rem .9rem; }
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ transition:none }
+  .hero-bg img{ transition:none }
+}
+
+/* Inline perk merged into signup */
+.perk-note{
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:#fff7e6; border:1px solid #efe3cc; color:#473b1f;
+  padding:.5rem .75rem; border-radius:.75rem; font-size:.95rem;
+}
+
+/* Slightly tighter rhythm between promise and updates */
+#promise{ padding-bottom:2.25rem; }
+#updates{ padding-top:2.25rem; }
+
+/* Signup card with depth */
+.card-signup{
+  background:#fff;
+  border-radius:1rem;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.04);
+  padding: 1.5rem 1.25rem 1.25rem;
+  max-width: 920px;
+  border: 1px solid rgba(0,0,0,.05);
+}
+.card-signup .section-title{ margin-top:.25rem; }
+@media (min-width: 992px){
+  .card-signup{ padding: 2rem; }
+}
+
+/* Accordion polish */
+.accordion-button:not(.collapsed){
+  background: #dcedff; /* gentle tint when open */
+  color: #0b3a2f;      /* PineGate deep green-ish */
+}
+.accordion-button:focus{ box-shadow: none; }
+
+/* Make the chevron rotate smoothly */
+.accordion-button::after{
+  transition: transform .2s ease;
+}
+.accordion-button:not(.collapsed)::after{
+  transform: rotate(-180deg);
+}
+
+/* keep padding so the hit-areas never cover text */
+#social-proof .carousel-inner{
+  padding-inline: clamp(2rem, 6vw, 3.25rem);
+}
+
+/* arrows are present but transparent */
+#social-proof .carousel-control-prev,
+#social-proof .carousel-control-next{
+  width: 2.5rem;
+  background: transparent;
+  opacity: 0;                      /* invisible */
+  transition: opacity .2s ease;
+}
+
+/* gently show on hover / focus (desktop) */
+#social-proof:hover .carousel-control-prev,
+#social-proof:hover .carousel-control-next,
+#social-proof .carousel-control-prev:focus,
+#social-proof .carousel-control-next:focus{
+  opacity: .35;
+}
+
+/* leave the icons as-is (no white disks) */
+#social-proof .carousel-control-prev-icon,
+#social-proof .carousel-control-next-icon{ filter: none; }
+
+/* on touch devices: no arrows, users swipe */
+@media (pointer: coarse){
+  #social-proof .carousel-control-prev,
+  #social-proof .carousel-control-next{ display:none; }
+}
+/* shared padding so stars line up with the quote text */
+#social-proof{ --quote-pad: clamp(1.25rem, 4vw, 2.5rem); }
+
+#social-proof .quote-meta{
+  padding-inline: var(--quote-pad);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .35rem;
+}
+
+#social-proof .carousel-inner{
+  padding-inline: var(--quote-pad);
+}
+
+/* star polish */
+#social-proof .quote-stars{
+  color: #f4b400;            /* warm gold */
+  font-size: .95rem;
+  line-height: 1;
+  letter-spacing: .05em;
+  translate: 0 -1px;         /* nudge to baseline */
+}
+
+/* spacing helper */
+.py-6{ padding-top:4rem; padding-bottom:4rem; }
+
+
+
+
+
+/* ----- Roadbar ----- */
+.roadbar{ position: relative; overflow: hidden; }
+.roadbar-track{
+  position:absolute; left:1rem; right:1rem; top:2.2rem; height:6px;
+  background:rgba(0,0,0,.08); border-radius:999px;
+}
+.roadbar-fill{
+  position:absolute; left:1rem; top:2.2rem; height:6px; width:0%;
+  background:#2e5536; border-radius:999px;
+  box-shadow:0 0 0 3px rgba(46,85,54,.08) inset;
+  transition:width .7s cubic-bezier(.2,.7,.2,1);
+}
+.roadbar-steps .step{
+  position:relative; min-width:160px; flex:1 1 0;
+  padding-top:1.5rem; margin-bottom:.5rem;
+}
+.roadbar-steps .step .dot{
+  position:absolute; top:1.1rem; left:0; transform:translateX(-50%);
+  width:16px; height:16px; border-radius:50%; background:#cbd5d1; box-shadow:0 0 0 4px #fff;
+}
+.roadbar-steps .step .label{ padding-left:.75rem; }
+.roadbar-steps .step .label .muted{ font-size:.9rem; color:#6b7280; }
+
+/* completed + active states */
+.roadbar-steps .step.completed .dot{ background:#2e5536; }
+.roadbar-steps .step.active .dot{
+  background:#2e5536;
+  box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(46,85,54,.18);
+  animation:pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%{ box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(46,85,54,.18); }
+  70%{ box-shadow:0 0 0 4px #fff, 0 0 0 18px rgba(46,85,54,.00); }
+  100%{ box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(46,85,54,.18); }
+}
+
+/* ----- How it Works step cards ----- */
+.how-it-works .stepcard{ transition: transform .25s ease, box-shadow .25s ease; }
+.how-it-works .stepcard:hover{ transform: translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.08); }
+.stepnum{
+  width:36px; height:36px; border-radius:999px; display:inline-flex;
+  align-items:center; justify-content:center; margin-bottom:.5rem;
+  background:#e6efe8; color:#2e5536; font-weight:700;
+}
+
+/* mobile layout tweaks */
+@media (max-width: 768px){
+  .roadbar-track, .roadbar-fill{ top:2.4rem; }
+  .roadbar-steps .step{ min-width:130px; }
+}
+
+/* === Roadbar polish === */
+.roadbar{
+  /* tweak once, the whole thing scales */
+  --dot: 14px;                /* dot size */
+  --track: 4px;               /* track thickness */
+  --padX: 1.25rem;            /* horizontal padding inside the card */
+}
+
+@media (min-width: 992px){
+  .roadbar{ --dot: 16px; --track: 5px; --padX: 1.5rem; }
+}
+
+/* place the track exactly through the dot centers */
+.roadbar-track{
+  left: var(--padX);
+  right: var(--padX);
+  height: var(--track);
+  top: calc(1.40rem + (var(--dot)/2) - (var(--track)/2));
+  background: rgba(0,0,0,.10);
+  border-radius: 999px;
+}
+
+.roadbar-fill{
+  left: var(--padX);
+  height: var(--track);
+  top: calc(1.40rem + (var(--dot)/2) - (var(--track)/2));
+  background: #2e5536;
+  border-radius: 999px;
+  box-shadow: 0 0 0 3px rgba(46,85,54,.08) inset;
+  transition: width .6s cubic-bezier(.2,.7,.2,1);
+}
+
+/* equal spacing + consistent min widths */
+.roadbar-steps{
+  gap: clamp(.5rem, 2vw, 1rem);
+}
+.roadbar-steps .step{
+  min-width: clamp(160px, 22vw, 240px);
+  flex: 1 1 0;
+  padding-top: 1.55rem;  /* space above labels so the track runs through dots */
+}
+
+/* dots sit dead-center on the track */
+.roadbar-steps .step .dot{
+  position: absolute;
+  left: 0;
+  top: calc(1.40rem);   /* dot top = track top - (dot/2) + (track/2) -> accounted in calc above */
+  transform: translateX(-50%);
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  background: #cbd5d1;
+  box-shadow: 0 0 0 4px #fff;
+}
+
+.roadbar-steps .step .label{ padding-left: .75rem; }
+.roadbar-steps .step .label .muted{ color:#6b7280; }
+
+/* completed + active */
+.roadbar-steps .step.completed .dot{ background:#2e5536; }
+.roadbar-steps .step.active .dot{
+  background:#2e5536;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 8px rgba(46,85,54,.18);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%  { box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(46,85,54,.18); }
+  70% { box-shadow:0 0 0 4px #fff, 0 0 0 18px rgba(46,85,54,0); }
+  100%{ box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(46,85,54,.18); }
+}
+
+/* tidy the footer line */
+#road-status{ font-weight: 600; }
+#road-percent{ color:#6b7280; }
+
+/* optional: a touch more vertical breathing room on large screens */
+@media (min-width: 1200px){
+  .roadbar{ padding-block: 2.25rem !important; }
+}
+
+
+
+/* --- Simple + Future combined section --- */
+#simple-and-future .section-title{ letter-spacing:.2px; }
+#simple-and-future .num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:999px;
+  background:#e6efe8; color:#2e5536; font-weight:700; margin-bottom:.6rem;
+}
+
+#simple-and-future .stepcard{ transition:transform .25s ease, box-shadow .25s ease; }
+#simple-and-future .stepcard:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 32px rgba(0,0,0,.08);
+}
+
+/* “Depth” cards for future features */
+#simple-and-future .feature-card{
+  background:#fff; padding:1.1rem 1.1rem 1rem;
+  border:1px solid rgba(0,0,0,.06);
+  text-align:left;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+#simple-and-future .feature-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+}
+#simple-and-future .feature-icon{
+  width:40px; height:40px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  background:#f1f5f2; color:#2e5536; margin-bottom:.5rem; font-size:1.1rem;
+}
+
+/* small-screen niceties */
+@media (max-width:576px){
+  #simple-and-future .feature-card{ text-align:left; }
+}
+
+
+
+
+/* Larger vertical rhythm + deeper background */
+.py-6{ padding-top:4rem; padding-bottom:5rem; }
+
+.partner-band{
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(46,85,54,.25), transparent 60%),
+              linear-gradient(#1f2925, #1f2925);
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;                       /* extends dark band */
+  padding-top: 4rem;
+  padding-bottom: 7rem;  /* increased from 5rem → pushes background lower */
+  min-height: 680px;     /* ensures enough depth regardless of content */
+}
+
+/* subtle grid texture + bottom fade so it blends into footer nicely */
+.partner-band::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px;
+  mask-image: linear-gradient(#000 70%, transparent); /* fade near bottom */
+}
+
+.text-partner-muted{ color: rgba(255,255,255,.78); }
+
+/* Card + focus polish */
+.partner-card{ background:#fff; }
+.partner-card .form-control{ border-radius:.75rem; }
+.partner-card .form-floating>.form-control:focus{
+  border-color:#2e5536; box-shadow:0 0 0 .2rem rgba(46,85,54,.15);
+}
+
+/* Desktop divider between pitch and form */
+@media (min-width: 992px){
+  .border-start-lg{ border-left:1px solid rgba(255,255,255,.18) !important; }
+}
+
+/* Reduce edge crowding on small screens */
+@media (max-width: 575.98px){
+  .partner-band{ padding-bottom: 4.5rem; }
+}
+
+/* Sections won't hide under fixed navbar */
+section[id], header[id], main[id] { scroll-margin-top: 84px; }
+
+/* Make sure the navbar toggler is always visible on light/dark backgrounds */
+.navbar-toggler { border-color: rgba(255,255,255,.35); }
+.navbar-light .navbar-toggler-icon { filter: invert(0); }
+.navbar-dark .navbar-toggler-icon { filter: invert(1); }
+
+/* Vertical timeline (mobile) */
+.timeline {
+  list-style: none;
+  margin: 0; padding: 0 0 0 1.25rem;
+  position: relative;
+  border-left: 2px solid rgba(0,0,0,.1);
+}
+.timeline li {
+  position: relative;
+  padding: .25rem 0 .75rem .5rem;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -9px; top: 4px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #d1e7dd; border: 2px solid #2e5536; /* Pine green */
+}
+.timeline li.is-completed::before { background: #2e5536; }
+.timeline li.is-current::before   { background: #58a37b; }
+

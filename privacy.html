@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Privacy Policy | PineGate Storage</title>
+  <meta name="robots" content="noindex"> <!-- remove when finalized -->
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Optional: your site styles so the brand text, fonts, etc. match -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Give room for fixed-top navbar */
+    body { padding-top: 76px; }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Same nav markup, but:
+       - use a light nav on this light page
+       - point links back to sections on index.html
+  -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" id="topNav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html#home">
+        <img src="./assets/logo.png" alt="PineGate Storage logo" width="40" height="40" class="me-2 rounded">
+        <span class="brand-text">PineGate Storage</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+              aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#faq">FAQ</a></li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-success btn-sm" href="index.html#updates">Get Updates</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="card shadow-sm rounded-4 p-4 p-md-5 mx-auto" style="max-width: 900px;">
+      <h1 class="h3 mb-1">Privacy Policy</h1>
+      <p class="text-muted">Effective date: <span id="effective-date">August 25, 2025</span></p>
+
+      <p>We respect your privacy. This policy explains what we collect, how we use it, and your choices.</p>
+
+      <h2 class="h5 mt-4">Information we collect</h2>
+      <ul>
+        <li><strong>Contact details</strong> you submit (e.g., name, email, organization) via our forms.</li>
+        <li><strong>Usage info</strong> like page views and referral parameters (e.g., UTM tags).</li>
+      </ul>
+
+      <h2 class="h5 mt-4">How we use information</h2>
+      <ul>
+        <li>To send pre-launch updates and respond to partnership inquiries.</li>
+        <li>To improve our site and plan services based on interest.</li>
+      </ul>
+
+      <h2 class="h5 mt-4">Sharing</h2>
+      <p>We don’t sell your data. We may use trusted processors (e.g., form services, email tools) solely to operate the site and communications.</p>
+
+      <h2 class="h5 mt-4">Data retention</h2>
+      <p>We keep information as long as needed for pre-launch communications and to comply with applicable law.</p>
+
+      <h2 class="h5 mt-4">Your choices</h2>
+      <ul>
+        <li>You can unsubscribe from update emails at any time.</li>
+        <li>To request deletion or access, email <a href="mailto:info@pinegatestorage.com">info@pinegatestorage.com</a>.</li>
+      </ul>
+
+      <h2 class="h5 mt-4">Contact</h2>
+      <p>Questions? <a href="mailto:info@pinegatestorage.com">info@pinegatestorage.com</a></p>
+
+      <hr class="my-4">
+      <p class="small text-muted">This page is provided for informational purposes and does not constitute legal advice.</p>
+    </div>
+  </main>
+
+  <footer class="py-4 small text-muted bg-light">
+    <div class="container text-center">© <span id="year"></span> PineGate Storage</div>
+  </footer>
+
+  <!-- Bootstrap JS for the mobile nav toggler -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
